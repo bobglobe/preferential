@@ -64,7 +64,8 @@ module Exceed
           pref = Preference.new  :context  => preferential,
                                  :name     => name,
                                  :value    => value
-          pref.set_model_target(self) # for the bug regarding pref's validation trying to invoke the 'model' assocation when self is a new record
+          #pref.set_model_target(self) # for the bug regarding pref's validation trying to invoke the 'model' assocation when self is a new record
+          pref.model=self
           send("#{preferential}").send("<<", pref)
         else
           pref.value = value
